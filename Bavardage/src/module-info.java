@@ -6,5 +6,5 @@
  *
  */
 module Bavardage {
-	
+	requires java.desktop;
 }
