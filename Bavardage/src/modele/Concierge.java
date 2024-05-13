@@ -25,7 +25,7 @@ public class Concierge {
         this.bavardsConnectes.add(bavard);
     }
 
-    // Méthode pour se désabonner du concierge
+	// Méthode pour se désabonner du concierge
     public void seDesabonner(Bavard bavard) {
         this.bavardsConnectes.remove(bavard);
     }
@@ -41,4 +41,11 @@ public class Concierge {
     public void onPapotageEventReceived(PapotageEvent event) {
         // Ne fait rien, car le concierge n'est pas destinataire des messages
     }
+    public ArrayList<Bavard> getBavardsConnectes() {
+		return bavardsConnectes;
+	}
+
+	public void setBavardsConnectes(ArrayList<Bavard> bavardsConnectes) {
+		this.bavardsConnectes = bavardsConnectes;
+	}
 }

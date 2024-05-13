@@ -50,4 +50,22 @@ public class Batiment {
         // Se désabonner du concierge
         concierge.seDesabonner(bavard);
     }
+
+	public ArrayList<Bavard> getBavards() {
+		return bavards;
+	}
+
+	public void setBavards(ArrayList<Bavard> bavards) {
+		this.bavards = bavards;
+	}
+
+	public Concierge getConcierge() {
+		return concierge;
+	}
+
+	public void setConcierge(Concierge concierge) {
+		this.concierge = concierge;
+	}
+    
+    
 }

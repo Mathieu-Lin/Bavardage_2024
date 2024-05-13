@@ -1,21 +1,25 @@
 package modele;
 
 //Définition de la classe PapotageEvent
-class PapotageEvent {
+public class PapotageEvent {
 	/**
 	 *  Attributs de la classe
 	 */
 	private String sujet;
 	private String corps;
 
-	// Constructeur de la classe
+	/**
+	 *  Constructeur de la classe
+	 */
 	public PapotageEvent(String sujet, String corps) {
 		this.sujet = sujet;
 		this.corps = corps;
 	}
 
 	
-	// Méthodes de la classe
+	/**
+	 *  Méthodes de la classe
+	 */
 
 	public String getSujet() {
 		return sujet;

@@ -4,6 +4,7 @@ public class Bavard implements PapotageListener{
 	/**
 	 *  Attributs de la classe
 	 */
+	
 	/**
 	 *  Constructeur de la classe
 	 */
@@ -17,6 +18,9 @@ public class Bavard implements PapotageListener{
 
     // Méthode appelée lorsqu'un événement de messagerie est reçu
     public void onPapotageEventReceived(PapotageEvent event) {
+    	String sujetDuMessage = event.getSujet();
+    	String corpsDuMessage = event.getCorps();
+    	
         // Réagir à l'événement reçu, par exemple afficher le message
         afficherMessage(event.getSujet(), event.getCorps());
     }

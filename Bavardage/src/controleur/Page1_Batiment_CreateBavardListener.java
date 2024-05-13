@@ -1,39 +1,41 @@
-package vue;
+package controleur;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
-import controleur.Page1_Batiment_CreateBavardListener;
 import modele.Batiment;
 
-import java.awt.*;
 
-public class Page1_Batiment_JFrame extends JFrame {
+public class Page1_Batiment_CreateBavardListener  implements ActionListener{
 	/**
 	 *  Attributs de la classe
 	 */
-	/*
-	 * Valeurs constantes : 
-	 * - HAUTEUR de la fenetre
-	 * - LARGEUR de la fenetre 
-	*/
-	private static final int HAUTEUR = 700, LARGEUR = 600;
+	private JFrame frame;
+	private JPanel principal;
 	private Batiment bat;
 	
 	/**
 	 *  Constructeur de la classe
 	 */
-	public Page1_Batiment_JFrame(Batiment bat) {
-	    //////////////////////////////////////////////////////////////
-	    // BEGINNING
-	    //////////////////////////////////////////////////////////////
-	    // Création de la fenêtre
-	    JFrame frame = new JFrame("Batiment des bavardages !");
-	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    frame.setSize(HAUTEUR, LARGEUR);
-
-	    // Création du panel principal
-	    JPanel principal = new JPanel();
-	    principal.setLayout(new BorderLayout());
-	    
+	public Page1_Batiment_CreateBavardListener(JFrame frame, JPanel principal, Batiment bat) {
+		this.frame =frame;
+		this.principal = principal;
+		this.bat = bat;
+	}
+	/**
+	 *  Méthodes de la classe
+	 */
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		this.bat.creerNouveauBavard();
+		
 	    //////////////////////////////////////////////////////////////
 	    // NORTH
 	    //////////////////////////////////////////////////////////////
@@ -69,13 +71,13 @@ public class Page1_Batiment_JFrame extends JFrame {
 	    // Création du panel north
 	    JPanel center = new JPanel();
 	    center.setLayout(new GridLayout(bat.getBavards().size(),2));
-	    center.setPreferredSize(new Dimension(center.getPreferredSize().width, 50));
+	    center.setPreferredSize(new Dimension(center.getPreferredSize().width, 20));
 	    
 	    for (int i = 0; i<bat.getBavards().size(); i++) {
 	    	// Création du sous panel 
 	    	JPanel centerBavard = new JPanel();
 	    	centerBavard.setLayout(new GridLayout(1,2));
-		    centerBavard.setPreferredSize(new Dimension(centerBavard.getPreferredSize().width, 50));
+		    centerBavard.setPreferredSize(new Dimension(centerBavard.getPreferredSize().width, 20));
 	    	
 		    JButton createConnBavardButton = new JButton("Connecter");
 		    createConnBavardButton.setBackground(Color.GREEN); // Définit la couleur de fond en vert
@@ -117,10 +119,12 @@ public class Page1_Batiment_JFrame extends JFrame {
 	    //////////////////////////////////////////////////////////////
 	    // ENDING
 	    //////////////////////////////////////////////////////////////
+	    // Retirer tous les trucs dans panel
+	    this.principal.removeAll();
+	    
 	    // ScrollBar 
 	    JScrollPane scrollPane = new JScrollPane(center);
 	    scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-	    
 	    // Ajout du panel north à panel
 	    principal.add(north,BorderLayout.NORTH);
 	    // Ajout du panel center à panel
@@ -129,16 +133,10 @@ public class Page1_Batiment_JFrame extends JFrame {
 	    principal.add(south,BorderLayout.SOUTH);
 	    // Ajout du scrollbar à panel
 	    principal.add(scrollPane,BorderLayout.EAST);
+	    
 	    // Ajout du panel à la fenêtre
 	    frame.getContentPane().add(principal);
-
-	    // Affichage de la fenêtre
-	    frame.setVisible(true);
-	    
-	    
+	    frame.getContentPane().revalidate(); // Revalide la mise en page pour afficher les nouveaux composants
+	    frame.getContentPane().repaint(); // Redessine la fenêtre pour refléter les modifications
 	}
-	/**
-	 *  Méthodes de la classe
-	 */
-	
 }
