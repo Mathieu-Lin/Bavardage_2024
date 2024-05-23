@@ -39,7 +39,9 @@ public class Concierge {
 
     // Méthode appelée lorsqu'un événement de messagerie est reçu
     public void onPapotageEventReceived(PapotageEvent event) {
-        // Ne fait rien, car le concierge n'est pas destinataire des messages
+        for (Bavard bavard : this.bavardsConnectes) {
+            bavard.onPapotageEventReceived(event);
+        }
     }
     public ArrayList<Bavard> getBavardsConnectes() {
 		return bavardsConnectes;

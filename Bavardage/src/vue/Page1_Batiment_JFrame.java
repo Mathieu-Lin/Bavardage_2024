@@ -1,7 +1,10 @@
 package vue;
 import javax.swing.*;
 
+import controleur.Page1_Batiment_ConnecterBavardListener;
 import controleur.Page1_Batiment_CreateBavardListener;
+import controleur.Page1_Batiment_DeconnecterBavardListener;
+import controleur.Page1_Batiment_DirectionConciergeListener;
 import modele.Batiment;
 
 import java.awt.*;
@@ -25,7 +28,9 @@ public class Page1_Batiment_JFrame extends JFrame {
 	    //////////////////////////////////////////////////////////////
 	    // BEGINNING
 	    //////////////////////////////////////////////////////////////
-	    // Création de la fenêtre
+		// Suppression de la fenetre précédente
+		dispose();		
+		// Création de la fenêtre
 	    JFrame frame = new JFrame("Batiment des bavardages !");
 	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    frame.setSize(HAUTEUR, LARGEUR);
@@ -87,6 +92,14 @@ public class Page1_Batiment_JFrame extends JFrame {
 		    createDisconnBavardButton.setForeground(Color.WHITE); // Définit la couleur de l'écriture en blanc
 		    createDisconnBavardButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		    
+		    // Ajout des controleurs Connecter
+		    Page1_Batiment_ConnecterBavardListener p1bConnBL = new Page1_Batiment_ConnecterBavardListener(frame,principal,bat,bat.getBavards().get(i));
+		    createConnBavardButton.addActionListener(p1bConnBL);
+		    
+		    // Ajout des controleurs Deconnecter
+		    Page1_Batiment_DeconnecterBavardListener p1bDeconnBL = new Page1_Batiment_DeconnecterBavardListener(frame,principal,bat,bat.getBavards().get(i));
+		    createDisconnBavardButton.addActionListener(p1bDeconnBL);
+		    
 		    centerBavard.add(createConnBavardButton);
 		    centerBavard.add(createDisconnBavardButton);
 		    
@@ -112,6 +125,9 @@ public class Page1_Batiment_JFrame extends JFrame {
 	    goConciergeButton.setForeground(Color.WHITE); // Définit la couleur de l'écriture en blanc
 	    goConciergeButton.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 	    
+	    // Ajout des controleurs Direction vers la page Concierge
+	    Page1_Batiment_DirectionConciergeListener p1bDCL = new Page1_Batiment_DirectionConciergeListener(frame,bat,bat.getConcierge());
+	    goConciergeButton.addActionListener(p1bDCL);
 	    south.add(goConciergeButton);
 	    
 	    //////////////////////////////////////////////////////////////

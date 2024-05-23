@@ -7,26 +7,35 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.SwingConstants;
 
 import modele.Batiment;
+import modele.Bavard;
 
-
-public class Page1_Batiment_CreateBavardListener  implements ActionListener{
+public class Page1_Batiment_ConnecterBavardListener implements ActionListener{
 	/**
 	 *  Attributs de la classe
 	 */
 	private JFrame frame;
 	private JPanel principal;
 	private Batiment bat;
+	private Bavard bav;
+	
 	
 	/**
 	 *  Constructeur de la classe
 	 */
-	public Page1_Batiment_CreateBavardListener(JFrame frame, JPanel principal, Batiment bat) {
+	public Page1_Batiment_ConnecterBavardListener(JFrame frame, JPanel principal, Batiment bat, Bavard bav) {
 		this.frame =frame;
 		this.principal = principal;
 		this.bat = bat;
+		this.bav = bav;
 	}
 	/**
 	 *  Méthodes de la classe
@@ -34,7 +43,7 @@ public class Page1_Batiment_CreateBavardListener  implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		this.bat.creerNouveauBavard();
+		this.bat.connecterBavard(this.bav);
 		
 	    //////////////////////////////////////////////////////////////
 	    // NORTH
