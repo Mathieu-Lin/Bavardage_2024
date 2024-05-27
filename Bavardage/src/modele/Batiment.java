@@ -10,7 +10,7 @@ public class Batiment {
     private ArrayList<Bavard> bavards;
     
     // Le concierge du bâtiment
-    Concierge concierge;
+    private Concierge concierge;
 
 	/**
 	 *  Constructeur de la classe

@@ -7,7 +7,7 @@ public class Bavard implements PapotageListener {
     /**
      *  Attributs de la classe
      */
-    private List<PapotageEvent> messagesRecus;
+    private ArrayList<PapotageEvent> messagesRecus;
 
     /**
      *  Constructeur de la classe
@@ -53,11 +53,11 @@ public class Bavard implements PapotageListener {
         }
         return messagesRecus.get(messagesRecus.size() - 1);
     }
-    public List<PapotageEvent> getMessagesRecus() {
+    public ArrayList<PapotageEvent> getMessagesRecus() {
 		return messagesRecus;
 	}
 
-	public void setMessagesRecus(List<PapotageEvent> messagesRecus) {
+	public void setMessagesRecus(ArrayList<PapotageEvent> messagesRecus) {
 		this.messagesRecus = messagesRecus;
 	}
 }
